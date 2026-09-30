@@ -7,10 +7,10 @@ import os
 import shutil
 
 
-def train(model, train_dataloader, epochs, lr, loss_fn, val_dataloader=None, clip_grad=False, method=None, input_sequence=None):
+def train(model, train_dataloader, epochs, lr, loss_fn, val_dataloader=None, clip_grad=False, method=None, input_sequence=None, dir=None):
 
     optim = torch.optim.Adam(lr=lr, params=model.parameters())
-
+    writer = SummaryWriter(f"{dir}/runs")
     train_losses = []
     for epoch in range(epochs):
 
@@ -49,8 +49,15 @@ def train(model, train_dataloader, epochs, lr, loss_fn, val_dataloader=None, cli
                 single_loss = loss.mean()
                 val_loss += single_loss
 
-        if epoch % 50==0: 
-            print("Epoch %d, Train loss %0.6f, Val loss %0.6f, iteration time %0.6f" % (epoch, train_loss, val_loss, time.time() - start_time))
+        if epoch % 5==0 or epoch == epochs -1:
+            iteration_time = time.time() - start_time 
+            print("Epoch %d, Train loss %0.6f, Val loss %0.6f, iteration time %0.6f" % (epoch, train_loss, val_loss, iteration_time))
+            writer.add_scalar("Loss/Train", train_loss, epoch)
+            if val_dataloader is not None:
+                writer.add_scalar("Loss/Validation", val_loss, epoch)    
+            writer.add_scalar("Metrics/Iteration_Time", iteration_time, epoch)
+            writer.flush()
+        
         model.train()
 
 

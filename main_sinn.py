@@ -30,7 +30,7 @@ p.add_argument('--alpha', type=float, default=1.0,
                help='$\\alpha\in\{0.1,1.0,5.0\}$. ')
 p.add_argument('--beta', type=float, default=0.1, 
                help='$\\beta\in\{0.1,1.0,5.0\}$. ')
-p.add_argument('--num_epochs', type=int, default=10)
+p.add_argument('--num_epochs', type=int, default=2000)
 p.add_argument('--lr', type=float, default=0.001, 
                help='learning rate. default=0.001')
 p.add_argument('--K', type=int, default=1, 
@@ -300,7 +300,7 @@ def main_sinn(data_type, method, root_path):
     #print("Training network...")
     if method!='Voter':
         training.train(model=model, train_dataloader=train_dataloader, val_dataloader=val_dataloader, epochs=num_epochs, lr=opt.lr,
-                       loss_fn=_method.loss_function, method=method, input_sequence=sequence)
+                       loss_fn=_method.loss_function, method=method, input_sequence=sequence, dir= outdir)
     #print("Network trained...")
 
     model.eval()
