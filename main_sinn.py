@@ -13,6 +13,15 @@ from torch.utils.data import DataLoader
 import configargparse
 from scipy.interpolate import interp1d
 
+methods_dictionary = {
+    'Voter': voter,
+    'DeGroot': degroot,
+    'NN': nn,
+    'AsLM': aslm,
+    'SLANT': slant,
+    'SLANT+': slant_plus,
+    'SINN': sinn
+}
 
 p = configargparse.ArgumentParser()
 p.add_argument('--method', type=str, default="SINN", 
@@ -273,20 +282,7 @@ def main_sinn(data_type, method, root_path):
     # Build the model
     ###############################################################################
 
-    if method == 'Voter':
-        _method = voter
-    elif method == 'DeGroot':
-        _method = degroot
-    elif method == 'NN':
-        _method = nn
-    elif method=="AsLM": 
-        _method = aslm
-    elif method=="SLANT":
-        _method = slant
-    elif method=="SLANT+":
-        _method = slant_plus
-    elif method=="SINN":
-        _method = sinn
+    _method = methods_dictionary.get(method)
 
     torch.manual_seed(100)
     model = _method.model(type=opt.activation_func, num_users=num_users, hidden_features=opt.hidden_features, 
