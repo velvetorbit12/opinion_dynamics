@@ -16,7 +16,7 @@ do
             type_odm=`echo $params | jq -r ".[$i].type_odm"`
 
             ## Run main function at each iteration of loop 
-            python3 main_sinn.py \
+            python3 main.py \
                   --method $method \
                   --dataset $dataset \
                   --save_dir output/ \

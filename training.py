@@ -1,10 +1,6 @@
 import torch
 from torch.utils.tensorboard import SummaryWriter
-from tqdm.autonotebook import tqdm
 import time
-import numpy as np
-import os
-import shutil
 
 
 def train(model, train_dataloader, epochs, lr, loss_fn, val_dataloader=None, clip_grad=False, method=None, input_sequence=None, dir=None):

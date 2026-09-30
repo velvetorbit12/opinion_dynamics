@@ -223,7 +223,7 @@ def prediction(use_profile, dataloader, model, batch_size, nclasses):
 
 
 
-def main_sinn(data_type, method, root_path):
+def main(data_type, method, root_path):
 
     batch_size = opt.batch_size
     use_profile = opt.use_profile 
@@ -343,6 +343,6 @@ if __name__ == "__main__":
     logging_root = os.path.join(opt.save_dir, opt.dataset)
     if not os.path.exists(logging_root): os.makedirs(logging_root)
 
-    main_sinn(opt.dataset, opt.method, logging_root)
+    main(opt.dataset, opt.method, logging_root)
 
 

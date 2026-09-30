@@ -27,7 +27,7 @@ def loss_function(model_output, gt):
 
 class model(MetaModule):
 
-    def __init__(self, num_users=1, type='relu', 
+    def __init__(self, num_users=1, activation_function='relu', 
                  hidden_features=256, num_hidden_layers=3, nclasses=None, **kwargs):
         super().__init__()
         self.num_users = num_users
@@ -42,7 +42,7 @@ class model(MetaModule):
         self.flag_profile = flag_profile
 
         self.net = MLPNet(num_users=num_users, num_hidden_layers=num_hidden_layers,
-                          hidden_features=hidden_features, outermost_linear=type, nonlinearity=type)
+                          hidden_features=hidden_features, outermost_linear=activation_function, nonlinearity=activation_function)
         self.val2label = nn.Linear(1, nclasses)
 
         #print(self)

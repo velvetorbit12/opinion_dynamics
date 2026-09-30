@@ -112,10 +112,10 @@ We provide sample real data in working/. But you can also query the dataset via 
 
 ### Example of Usage
 
-- Training: Run ```main_sinn.py``` file to train and evaluate the proposed method with default settings. 
+- Training: Run ```main.py``` file to train and evaluate the proposed method with default settings. 
  
   ```
-  python3 main_sinn.py 
+  python3 main.py 
   ``` 
 
 ### Advanced Usage
@@ -134,7 +134,7 @@ We provide sample real data in working/. But you can also query the dataset via 
 
 - To specify the parameters, run
 ```
-python3 main_sinn.py \
+python3 main.py \
    --method SINN \
    --dataset synthetic_consensus \
    --save_dir output/ \
