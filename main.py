@@ -23,33 +23,33 @@ methods_dictionary = {
     'SINN': sinn
 }
 
-p = configargparse.ArgumentParser()
-p.add_argument('--method', type=str, default="SINN", 
+parser = configargparse.ArgumentParser()
+parser.add_argument('--method', type=str, default="SINN", 
                help='Options are "Voter", "DeGroot", "AsLM", "SLANT", "SLANT+", "NN", "SINN"')
-p.add_argument('--dataset', type=str, default="synthetic_consensus", 
+parser.add_argument('--dataset', type=str, default="synthetic_consensus", 
                help='Options are "synthetic_consensus","synthetic_clustering","synthetic_polarization","sample_twitter_Abortion"')
-p.add_argument('--save_dir', type=str, default="output/") 
-p.add_argument('--batch_size', type=int, default=256, 
+parser.add_argument('--save_dir', type=str, default="output/") 
+parser.add_argument('--batch_size', type=int, default=256, 
                help='Number of epochs to train for.')
-p.add_argument('--hidden_features', type=int, default=1,
+parser.add_argument('--hidden_features', type=int, default=1,
                help='Number of units in neural network. $L\in\{8,12,16\}$.')
-p.add_argument('--num_hidden_layers', type=int, default=7, 
+parser.add_argument('--num_hidden_layers', type=int, default=7, 
                help='Number of layers in neural network. $L\in\{3,5,7\}$.')
-p.add_argument('--alpha', type=float, default=1.0, 
+parser.add_argument('--alpha', type=float, default=1.0, 
                help='$\\alpha\in\{0.1,1.0,5.0\}$. ')
-p.add_argument('--beta', type=float, default=0.1, 
+parser.add_argument('--beta', type=float, default=0.1, 
                help='$\\beta\in\{0.1,1.0,5.0\}$. ')
-p.add_argument('--num_epochs', type=int, default=2000)
-p.add_argument('--lr', type=float, default=0.001, 
+parser.add_argument('--num_epochs', type=int, default=2000)
+parser.add_argument('--lr', type=float, default=0.001, 
                help='learning rate. default=0.001')
-p.add_argument('--K', type=int, default=1, 
+parser.add_argument('--K', type=int, default=1, 
                help='dimension of latent space $K\in\{1,2,3\}$. ')
-p.add_argument('--type_odm', type=str, default="SBCM",
+parser.add_argument('--type_odm', type=str, default="SBCM",
                help='Options are "DeGroot", "SBCM", "BCM", "FJ"')
-p.add_argument('--use_profile', type=strtobool, default=False)
-p.add_argument('--activation_func', type=str, default='tanh',
+parser.add_argument('--use_profile', type=strtobool, default=False)
+parser.add_argument('--activation_func', type=str, default='tanh',
                help='Options are "sigmoid", "tanh", "relu", "selu", "softplus", "elu"')
-opt = p.parse_args()
+args = parser.parse_args()
 
 
 def prediction2label(x):

@@ -1,6 +1,4 @@
 import matplotlib.pyplot as plt
-import matplotlib.gridspec as gridspec
-import matplotlib
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -9,9 +7,7 @@ from matplotlib.collections import LineCollection
 from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score, confusion_matrix
 import glob
 import re
-from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
-from datetime import datetime
-import matplotlib.dates as mdates
+from wordcloud import WordCloud
 
 
 sns.set(style="white",font_scale=0.9)

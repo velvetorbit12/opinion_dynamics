@@ -19,3 +19,6 @@ tensorboard<=2.20.0
 protobuf<4.0
 datasets<=1.11.0
 ConfigArgParse
+seaborn
+networkx
+wordcloud
