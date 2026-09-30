@@ -1,4 +1,4 @@
-import sys
+# import sys
 import os
 import numpy as np
 import pandas as pd
@@ -6,16 +6,11 @@ import pandas as pd
 import training
 from src import slant, slant_plus, aslm, sinn, nn, voter, degroot
 from sklearn.metrics import f1_score, accuracy_score
-import matplotlib.pyplot as plt
-from datasets import load_dataset, DatasetDict, Features, Value, ClassLabel
 from distutils.util import strtobool
-
 import torch
 from torch.utils.data import Dataset
 from torch.utils.data import DataLoader
 import configargparse
-from scipy import interpolate
-import json
 from scipy.interpolate import interp1d
 
 
@@ -35,7 +30,7 @@ p.add_argument('--alpha', type=float, default=1.0,
                help='$\\alpha\in\{0.1,1.0,5.0\}$. ')
 p.add_argument('--beta', type=float, default=0.1, 
                help='$\\beta\in\{0.1,1.0,5.0\}$. ')
-p.add_argument('--num_epochs', type=int, default=1000)
+p.add_argument('--num_epochs', type=int, default=10)
 p.add_argument('--lr', type=float, default=0.001, 
                help='learning rate. default=0.001')
 p.add_argument('--K', type=int, default=1, 
